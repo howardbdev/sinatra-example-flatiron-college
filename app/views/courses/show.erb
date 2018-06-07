@@ -1,0 +1,13 @@
+<h2><%= @course.name %></h2>
+<p><%= @course.description %></p>
+<h3>Students Enrolled</h3>
+<ul>
+  <% @course.students.each do |student| %>
+    <li><%= student.name %></li>
+  <% end %>
+</ul>
+
+<% # if the current user doesn't own this course, don't show the edit link %>
+<% if @course.instructor_id == current_user.id %>
+  <a href="/courses/<%= @course.id %>/edit">Edit this course</a>
+<% end %>

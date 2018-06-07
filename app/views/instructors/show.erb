@@ -1,0 +1,27 @@
+<h3>Welcome, <%= @instructor.name %></h3>
+
+<!-- What do I want to see or do from this page? -->
+
+<!-- See my courses, and students in each course -->
+
+<!-- Course Name
+description
+
+List of students for that course -->
+
+<!-- How do I access my courses? -->
+
+<h4>Your courses:</h4>
+
+<ul>
+
+<% @instructor.courses.each do |course| %>
+  <a href="/courses/<%= course.id %>"><%= course.name %></a>
+  <ul>
+    <% course.students.each do |student| %>
+      <li><%= student.name %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+</ul>
