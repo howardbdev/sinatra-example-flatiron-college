@@ -1,3 +1,7 @@
+<% if flash[:message] %>
+  <h2><%= flash[:message] %></h2>
+<% end %>
+
 <h2><%= @course.name %></h2>
 <p><%= @course.description %></p>
 <h3>Students Enrolled</h3>

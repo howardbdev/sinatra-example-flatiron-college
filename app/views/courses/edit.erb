@@ -1,14 +1,17 @@
 Edit courses
 
+<% if flash[:message] %>
+  <h2 class="error-message"><%= flash[:message] %></h2>
+<% end %>
+
 <!-- where do name, description, and instructor go? -->
-<form class="" action="/courses/<%= @course.id %>" method="post">
+<form action="/courses/<%= @course.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
 
-  <label for="">Course Name</label>
+  <label for="name">Course Name</label>
   <input type="text" name="name" value="<%= @course.name %>"/><br>
-  <label for="">Description</label>
-  <textarea type="textarea" name="description" value=""><%= @course.description %></textarea><br>
-
+  <label for="description">Description</label>
+  <input type="text" name="description" value="<%= @course.description %>"><br>
   <input type="submit" name="" value="Update Course"><br>
 </form>
 

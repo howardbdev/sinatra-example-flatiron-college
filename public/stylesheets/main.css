@@ -113,3 +113,7 @@
     line-height: 24px;
   }
 }
+
+.error-message {
+  color: red;
+}

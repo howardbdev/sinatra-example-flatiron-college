@@ -1,4 +1,6 @@
 require './config/environment'
+require 'sinatra'
+require 'sinatra/flash'
 
 class ApplicationController < Sinatra::Base
 
@@ -7,14 +9,15 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "flatiron-college"
+    register Sinatra::Flash
   end
 
   get "/" do
-    redirect '/login'
+    redirect '/login' # => what happens is we fire a new request, GET '/login'
   end
 
   get '/login' do
-    erb :login
+    erb :login # is there a file, app/views/login.erb ??? if so, add its contents to the web page
   end
 
   post '/login' do

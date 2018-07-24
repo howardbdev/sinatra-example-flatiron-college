@@ -23,9 +23,12 @@ class CoursesController < ApplicationController
 
     if @course.update(name: params[:name], description: params[:description])
       # display success message
+      flash[:message] = "Course successfully updated"
       redirect "/courses/#{@course.id}"
     else
+      # what do I want to happen inside this block?
       # display error message
+      flash[:message] = "Unsuccessful update.  See errors: #{@course.errors.full_messages.to_sentence} "
       erb :'/courses/edit'
     end
 
