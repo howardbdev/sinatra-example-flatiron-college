@@ -5,5 +5,6 @@ class Course < ActiveRecord::Base
   belongs_to :instructor
 
   validates :name, :description, presence: true
+  validates :name, uniqueness: true
 
 end

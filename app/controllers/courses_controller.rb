@@ -28,7 +28,7 @@ class CoursesController < ApplicationController
     else
       # what do I want to happen inside this block?
       # display error message
-      flash[:message] = "Unsuccessful update.  See errors: #{@course.errors.full_messages.to_sentence} "
+      # we can use @course.errors in the edit page to show what went wrong
       erb :'/courses/edit'
     end
 
