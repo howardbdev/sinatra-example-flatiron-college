@@ -1,4 +1,18 @@
 class CoursesController < ApplicationController
+
+  # get the form to create a new course:
+  get '/courses/new' do
+    # declare a new ruby instance variable that holds an instantiated, unsaved, empty course
+    @course = Course.new
+    # render the form
+    erb :'/courses/new'
+  end
+
+  # create the course and commit to database
+  post '/courses' do
+
+  end
+
   get '/courses/:id' do
     @course = Course.find_by(id: params[:id])
     erb :'/courses/show'
@@ -33,4 +47,6 @@ class CoursesController < ApplicationController
     end
 
   end
+
+
 end
