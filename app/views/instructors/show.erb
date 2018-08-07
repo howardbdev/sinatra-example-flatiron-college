@@ -29,9 +29,10 @@ List of students for that course -->
 <!-- Add a form that allows an instructor to create a new course  -->
 <h1>form here</h1>
 <!-- what do my params look like? -->
+
 <form action="/courses" method="post">
   <label for="name">Course Name:</label>
-  <input type="text" name="name" value="" placeholder="Course name">
+  <input type="text" name="name" value="<%= @course.name %>" placeholder="Course name">
   <label for="description">Course Description:</label>
   <input type="text" name="description" value="" placeholder="Course description">
   <input type="submit" value="Create course">

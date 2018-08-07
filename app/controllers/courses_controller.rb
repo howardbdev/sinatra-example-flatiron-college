@@ -10,7 +10,7 @@ class CoursesController < ApplicationController
 
   # create the course and commit to database
   post '/courses' do
-    if !params[:name].empty && !params[:description].empty && logged_in?
+    if !params[:name].empty? && !params[:description].empty? && logged_in?
       # now, I want to build my new course
         # @course = Course.create(params) # build a new course object AND attempt to save to DB
       # @course = Course.new(params) # instantiates a new course object without saving to DB
@@ -20,13 +20,14 @@ class CoursesController < ApplicationController
       # @course.instructor_id = current_user.id
 
       # combining line 15 and 19, we can do this:
-      @course = current_user.courses.build(params)
+      course = current_user.courses.build(params)
 
       # try to save the new course to the database
-      if @course.valid?
-        @course.save
+      if course.valid?
+        course.save
         # if it saves, redirect to that course's show page with success message
         flash[:message] = "Course successfully created!"
+        redirect "/courses/#{course.id}"
       else
         # otherwise, go back to the new course form (instructor show page)
         # with an error message
