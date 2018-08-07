@@ -10,7 +10,9 @@ class CoursesController < ApplicationController
 
   # create the course and commit to database
   post '/courses' do
+    # now, I want to build my new course
 
+    
   end
 
   get '/courses/:id' do
