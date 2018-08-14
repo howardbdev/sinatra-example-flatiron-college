@@ -1,3 +1,7 @@
+<% if flash[:message] %>
+  <h2><%= flash[:message] %></h2>
+<% end %>
+
 <h3>Welcome, <%= @instructor.name %></h3>
 
 <!-- What do I want to see or do from this page? -->
@@ -32,7 +36,7 @@ List of students for that course -->
 
 <form action="/courses" method="post">
   <label for="name">Course Name:</label>
-  <input type="text" name="name" value="<%= @course.name %>" placeholder="Course name">
+  <input type="text" name="name" value="<%#= @course.name %>" placeholder="Course name">
   <label for="description">Course Description:</label>
   <input type="text" name="description" value="" placeholder="Course description">
   <input type="submit" value="Create course">

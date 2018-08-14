@@ -35,13 +35,15 @@ class CoursesController < ApplicationController
         redirect "/instructors/#{current_user.id}"
       end
     else
-      redirect "/instructors/#{current_user.id}" if logged_id?
+      flash[:message] = "Error creating course"
+      redirect "/instructors/#{current_user.id}" if logged_in?
       redirect "/"
     end
   end
 
   get '/courses/:id' do
     @course = Course.find_by(id: params[:id])
+    @students = Student.all.select {|s| !@course.students.include?(s)}
     erb :'/courses/show'
   end
 

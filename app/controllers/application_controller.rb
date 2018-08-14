@@ -16,8 +16,12 @@ class ApplicationController < Sinatra::Base
     redirect '/login' # => what happens is we fire a new request, GET '/login'
   end
 
-  get '/login' do
-    erb :login # is there a file, app/views/login.erb ??? if so, add its contents to the web page
+  get('/login') do
+    if logged_in?
+      redirect "/instructors/#{current_user.id}"
+    else
+      erb :login # is there a file, app/views/login.erb ??? if so, add its contents to the web page
+    end
   end
 
   post '/login' do
