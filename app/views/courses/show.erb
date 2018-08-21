@@ -13,24 +13,25 @@
 
 <% # if the current user doesn't own this course, don't show the edit link %>
 <% if @course.instructor_id == current_user.id %>
-
-  <!-- Add option to add students to this courses -->
-  <form action="/enrollments" method="post">
-    <!-- I have the @course -->
-    <input type="hidden" name="course_id" value="<%= @course.id %>">
-    <!-- I need a list of current students @students-->
-    <!-- I need a way to choose a student -->
-    <select name="student_id">
-      <% @students.each do |student| %>
-        <option value="<%= student.id %>"><%= student.name %></option>
-      <% end %>
-      <!-- <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="mercedes">Mercedes</option>
-      <option value="audi">Audi</option> -->
-    </select>
-    <input type="submit" name="" value="Enroll student">
-  </form>
+  <% if !@students.empty? %>
+    <!-- Add option to add students to this courses -->
+    <form action="/enrollments" method="post">
+      <!-- I have the @course -->
+      <input type="hidden" name="course_id" value="<%= @course.id %>">
+      <!-- I need a list of current students @students-->
+      <!-- I need a way to choose a student -->
+      <select name="student_id">
+        <% @students.each do |student| %>
+          <option value="<%= student.id %>"><%= student.name %></option>
+        <% end %>
+        <!-- <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option> -->
+      </select>
+      <input type="submit" name="" value="Enroll student">
+    </form>
+  <% end %>
 
   <a href="/courses/<%= @course.id %>/edit">Edit this course</a>
 <% end %>
