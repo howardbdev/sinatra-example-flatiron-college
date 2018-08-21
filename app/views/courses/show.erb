@@ -15,7 +15,7 @@
 <% if @course.instructor_id == current_user.id %>
 
   <!-- Add option to add students to this courses -->
-  <form class="" action="/enrollments" method="post">
+  <form action="/enrollments" method="post">
     <!-- I have the @course -->
     <input type="hidden" name="course_id" value="<%= @course.id %>">
     <!-- I need a list of current students @students-->
@@ -31,7 +31,6 @@
     </select>
     <input type="submit" name="" value="Enroll student">
   </form>
-
 
   <a href="/courses/<%= @course.id %>/edit">Edit this course</a>
 <% end %>

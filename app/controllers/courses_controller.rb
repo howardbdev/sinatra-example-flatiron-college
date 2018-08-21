@@ -43,6 +43,7 @@ class CoursesController < ApplicationController
 
   get '/courses/:id' do
     @course = Course.find_by(id: params[:id])
+    # REFACTOR suggestion - move select to a class method
     @students = Student.all.select {|s| !@course.students.include?(s)}
     erb :'/courses/show'
   end
