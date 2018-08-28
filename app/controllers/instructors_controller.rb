@@ -18,5 +18,12 @@ class InstructorsController < ApplicationController
     end
   end
 
+  get '/instructors' do
+    # what goes in here?
+    @instructors = Instructor.all
+
+    erb :'/instructors/index'
+  end
+
 
 end

@@ -1,0 +1,14 @@
+<h3>Meet Our Instructors!</h3>
+
+<ul>
+  <% @instructors.each do |instructor| %>
+    <li><a href="/instructors/<%= instructor.id %>"><%= instructor.name %></a></li><br>
+      <ul>
+        <!-- TODO: make sure users can't change courses on a instructor's show page -->
+        <% instructor.courses.each do |course| %>
+          <li><a href="/courses/<%= course.id %>"><%= course.name %></a></li>
+        <% end %>
+      </ul>
+      <br><br>
+  <% end %>
+</ul>
