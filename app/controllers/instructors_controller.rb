@@ -11,7 +11,7 @@ class InstructorsController < ApplicationController
     # what do I want to do?
     # 1. find the instructor, and save it to a instance variable
     @instructor = Instructor.find_by(id: params[:id])
-    if @instructor
+    if @instructor && logged_in?
       erb :"instructors/show"
     else
       redirect "/"

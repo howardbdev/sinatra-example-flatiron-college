@@ -26,14 +26,12 @@ List of students for that course -->
       <li><%= student.name %></li>
     <% end %>
   </ul>
+  <br>
 <% end %>
 
 </ul>
-
-<!-- Add a form that allows an instructor to create a new course  -->
-<h1>form here</h1>
-<!-- what do my params look like? -->
-
+<br>
+<h5>Add a course</h5>
 <form action="/courses" method="post">
   <label for="name">Course Name:</label>
   <input type="text" name="name" value="<%#= @course.name %>" placeholder="Course name">

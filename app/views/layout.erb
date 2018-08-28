@@ -14,6 +14,34 @@
   <link rel="stylesheet" href="/stylesheets/main.css" />
 </head>
 <body>
+  <!-- Here is where my nav links will go   -->
+  <div class="navbar">
+
+    <% if logged_in? %>
+      <!-- Links I should see if I'm logged in -->
+      <!-- homepage -->
+      <a href="/instructors/<%= current_user.id %>">Home</a>
+      <!-- log out  -->
+      <a href="/logout">Log Out</a>
+
+    <% else %>
+      <!-- Links I should see if I'm not logged in -->
+
+      <!-- log in -->
+      <a href="/login">Log In</a>
+      <!-- sign up - NOT BUILT YET -->
+      <a href="/signup">No Account? Sign Up!</a>
+
+    <% end %>
+
+    <!-- Always show these links -->
+    <!-- all instructors NOT BUILT YET-->
+    <a href="/instructors">All Instructors</a>
+    <!-- all courses NOT BUILT YET -->
+    <a href="/courses">All Courses</a>
+
+
+  </div>
   <div class="wrapper">
 
       <%= yield %>

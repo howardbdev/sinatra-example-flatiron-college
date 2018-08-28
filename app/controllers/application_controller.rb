@@ -16,6 +16,7 @@ class ApplicationController < Sinatra::Base
     redirect '/login' # => what happens is we fire a new request, GET '/login'
   end
 
+# I could build a sessions controller to handle logging in and out
   get('/login') do
     if logged_in?
       redirect "/instructors/#{current_user.id}"
@@ -40,6 +41,11 @@ class ApplicationController < Sinatra::Base
     else
       redirect '/login'
     end
+  end
+
+  get '/logout' do
+    session.clear
+    redirect '/login'
   end
 
   helpers do
