@@ -2,7 +2,7 @@
   <h2><%= flash[:message] %></h2>
 <% end %>
 
-<h3>Welcome, <%= @instructor.name %></h3>
+<h3>Professor <%= @instructor.name %>'s Page</h3>
 
 <!-- What do I want to see or do from this page? -->
 
@@ -11,31 +11,40 @@
 <!-- Course Name
 description
 
-List of students for that course -->
+List of students for that courses -->
 
 <!-- How do I access my courses? -->
 
-<h4>Your courses:</h4>
+<h4><%= current_user == @instructor ? "Your" : "#{@instructor.name}'s" %> courses:</h4>
 
 <ul>
 
 <% @instructor.courses.each do |course| %>
   <a href="/courses/<%= course.id %>"><%= course.name %></a>
-  <ul>
-    <% course.students.each do |student| %>
-      <li><%= student.name %></li>
-    <% end %>
-  </ul>
+
+  <!-- I don't want just anyone to see the student list  -->
+  <% if current_user == @instructor %>
+    <ul>
+      <% course.students.each do |student| %>
+        <li><%= student.name %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <br>
 <% end %>
 
 </ul>
 <br>
-<h5>Add a course</h5>
-<form action="/courses" method="post">
-  <label for="name">Course Name:</label>
-  <input type="text" name="name" value="<%#= @course.name %>" placeholder="Course name">
-  <label for="description">Course Description:</label>
-  <input type="text" name="description" value="" placeholder="Course description">
-  <input type="submit" value="Create course">
-</form>
+
+
+<% if current_user == @instructor %>
+  <h5>Add a course</h5>
+  <form action="/courses" method="post">
+    <label for="name">Course Name:</label>
+    <input type="text" name="name" value="<%#= @course.name %>" placeholder="Course name">
+    <label for="description">Course Description:</label>
+    <input type="text" name="description" value="" placeholder="Course description">
+    <input type="submit" value="Create course">
+  </form>
+<% end %>
