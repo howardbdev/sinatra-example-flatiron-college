@@ -52,6 +52,10 @@ class ApplicationController < Sinatra::Base
     def current_user
       @current_user ||= Instructor.find_by(id: session[:user_id]) if session[:user_id]
     end
+
+    def authorize_user
+      redirect '/login' unless logged_in?
+    end
   end
 
 end

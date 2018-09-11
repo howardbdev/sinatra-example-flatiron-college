@@ -23,7 +23,9 @@
       <a href="/instructors/<%= current_user.id %>">Home</a>
       <!-- log out  -->
       <a href="/logout">Log Out</a>
-
+      <!-- Only show if logged in -->
+      <a href="/instructors">All Instructors</a>
+      <a href="/courses">All Courses</a>
     <% else %>
       <!-- Links I should see if I'm not logged in -->
 
@@ -34,17 +36,10 @@
 
     <% end %>
 
-    <!-- Always show these links -->
-    <!-- all instructors NOT BUILT YET-->
-    <a href="/instructors">All Instructors</a>
-    <!-- all courses NOT BUILT YET -->
-    <a href="/courses">All Courses</a>
-
-
   </div>
   <div class="wrapper">
 
-      <%= yield %>
+    <%= yield %>
 
     <footer class="branding">
       <small>&copy; 2018 <strong>FlatironSchool</strong></small>

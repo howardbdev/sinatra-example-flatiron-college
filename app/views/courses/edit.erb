@@ -16,6 +16,10 @@ Edit courses
   <input type="submit" name="" value="Update Course"><br>
 </form>
 
+<form action="/courses/<%= @course.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" name="" value="Delete this course">
+</form>
 
 
 <!-- We will come back to this -->

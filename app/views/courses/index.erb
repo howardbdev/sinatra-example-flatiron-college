@@ -1,0 +1,14 @@
+Courses Index Page
+
+<% @courses.each do |course| %>
+<h4>
+  <a href="/courses/<%= course.id %>"><%= course.name %></a>
+</h4>
+  <p>
+    Instructor: <a href="/instructors/<%= course.instructor_id %>"><%= course.instructor.name %></a>
+  </p>
+  <p>Description:  <%= course.description %></p>
+
+
+  <br>
+<% end %>

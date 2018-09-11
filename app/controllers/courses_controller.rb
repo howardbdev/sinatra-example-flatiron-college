@@ -1,12 +1,22 @@
 class CoursesController < ApplicationController
 
+  #Index view
+  get '/courses' do
+    authorize_user
+    # do I need any kind of protections/validations here?
+    @courses = Course.all
+    erb :'courses/index'
+  end
+
   # get the form to create a new course:
   get '/courses/new' do
+    authorize_user
     # declare a new ruby instance variable that holds an instantiated, unsaved, empty course
     @course = Course.new
     # render the form
     erb :'/courses/new'
   end
+
 
   # create the course and commit to database
   post '/courses' do
@@ -76,6 +86,22 @@ class CoursesController < ApplicationController
       erb :'/courses/edit'
     end
 
+  end
+
+  # DELETE a course
+  delete '/courses/:id' do
+    # what has to happen within this action?
+    # 1. find the course by its id
+    @course = Course.find_by(id: params[:id])
+    # before we do anything with this course, make sure the current user owns  it
+    if current_user.id == @course.instructor_id && @course.destroy
+      # 2. delete it
+      flash[:message] = "#{@course.name} successfully deleted."
+    else
+      flash[:message] = "You don't have the authority to delete #{@course.name}."
+    end
+    # 3. go back to the instructor show page??
+    redirect "/instructors/#{current_user.id}"
   end
 
 
