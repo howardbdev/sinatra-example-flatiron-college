@@ -12,6 +12,8 @@ Some examples of topics in these videos that are beyond the scope of what you ne
 - ActiveRecord validations:
   We use AR validations and errors in this project, but the curriculum doesn't really focus on them until Rails.  They are fairly simple to implement, but for the Sinatra project, checking params in controller actions is sufficient.
 
+Video Links:
+
   [part 1 of 13]<br>
   [part 2 of 13]<br>
   [part 3 of 13]<br>
